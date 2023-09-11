@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import type { AppProps } from "next/app";
 import { RainbowKitProvider, darkTheme, lightTheme } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
@@ -6,14 +6,22 @@ import NextNProgress from "nextjs-progressbar";
 import { Toaster } from "react-hot-toast";
 import { useDarkMode } from "usehooks-ts";
 import { WagmiConfig } from "wagmi";
-import { Footer } from "~~/components/Footer";
-import { Header } from "~~/components/Header";
+import BackToTop from "~~/components/landing/BackToTop";
+import Categories from "~~/components/landing/Categories";
+import Collection from "~~/components/landing/Collection";
+import Creators from "~~/components/landing/Creators";
+import Hero from "~~/components/landing/Hero";
+import LandingLayout from "~~/components/landing/LandingLayout";
+import Products from "~~/components/landing/Products";
 import { BlockieAvatar } from "~~/components/scaffold-eth";
 import { useNativeCurrencyPrice } from "~~/hooks/scaffold-eth";
+import "~~/public/assets/css/bootstrap-green.min.css";
 import { useGlobalState } from "~~/services/store/store";
 import { wagmiConfig } from "~~/services/web3/wagmiConfig";
 import { appChains } from "~~/services/web3/wagmiConnectors";
 import "~~/styles/globals.css";
+
+// import "~~/public/assets/css/style-dark.min.css";
 
 const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
   const price = useNativeCurrencyPrice();
@@ -41,11 +49,17 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
         theme={isDarkTheme ? darkTheme() : lightTheme()}
       >
         <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="relative flex flex-col flex-1">
-            <Component {...pageProps} />
-          </main>
-          <Footer />
+          <LandingLayout>
+            <Hero />
+
+            <section class="section">
+              <Categories />
+              <Products />
+              <Creators />
+            </section>
+
+            <Collection />
+          </LandingLayout>
         </div>
         <Toaster />
       </RainbowKitProvider>
