@@ -4,9 +4,9 @@ const Navbar: React.FC = () => {
   return (
     <header id="topnav" className="defaultscroll sticky">
       <div className="container">
-        <a className="logo" href="index.html">
+        <a className="logo" href="/">
           <img src="assets/images/logo-dark.png" height="24" className="logo-light-mode" alt="" />
-          <img src="assets/images/logo-light.png" height="24" className="logo-dark-mode" alt="" />
+          <img src="assets/images/logo-dark.png" height="24" className="logo-dark-mode" alt="" />
         </a>
 
         <div className="menu-extras">

@@ -18,7 +18,7 @@ const Collection: React.FC = () => {
 
           <div className="col-lg-4 col-md-6 col-12">
             <div className="text-md-end">
-              <a href="#" className="btn btn-primary d-flex align-items-center">
+              <a href="#" className="btn btn-primary">
                 <i className="uil uil-bookmark" />
                 Create your collection
               </a>

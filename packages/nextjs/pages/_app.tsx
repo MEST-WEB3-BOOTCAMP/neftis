@@ -6,7 +6,6 @@ import NextNProgress from "nextjs-progressbar";
 import { Toaster } from "react-hot-toast";
 import { useDarkMode } from "usehooks-ts";
 import { WagmiConfig } from "wagmi";
-import BackToTop from "~~/components/landing/BackToTop";
 import Categories from "~~/components/landing/Categories";
 import Collection from "~~/components/landing/Collection";
 import Creators from "~~/components/landing/Creators";
@@ -19,9 +18,7 @@ import "~~/public/assets/css/bootstrap-green.min.css";
 import { useGlobalState } from "~~/services/store/store";
 import { wagmiConfig } from "~~/services/web3/wagmiConfig";
 import { appChains } from "~~/services/web3/wagmiConnectors";
-import "~~/styles/globals.css";
-
-// import "~~/public/assets/css/style-dark.min.css";
+// import "~~/styles/globals.css";
 
 const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
   const price = useNativeCurrencyPrice();
