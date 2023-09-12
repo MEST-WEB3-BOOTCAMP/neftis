@@ -36,158 +36,161 @@ export const RainbowKitCustomConnectButton = () => {
           : undefined;
 
         return (
-          <>
-            {(() => {
-              if (!connected) {
-                return (
-                  <button className="btn btn-primary btn-sm" onClick={openConnectModal} type="button">
-                    Connect Wallet
-                  </button>
-                );
-              }
+          <div className="container">
+            <div className="row">
+              <div className="col">
+                {(() => {
+                  if (!connected) {
+                    return (
+                      <button className="btn btn-primary btn-sm" onClick={openConnectModal} type="button">
+                        Connect Wallet
+                      </button>
+                    );
+                  }
 
-              if (chain.unsupported || chain.id !== configuredNetwork.id) {
-                return (
-                  <div className="dropdown dropdown-end">
-                    <label tabIndex={0} className="btn btn-error btn-sm dropdown-toggle gap-1">
-                      <span>Wrong network</span>
-                      <ChevronDownIcon className="h-6 w-4 ml-2 sm:ml-0" />
-                    </label>
-                    <ul
-                      tabIndex={0}
-                      className="dropdown-content menu p-2 mt-1 shadow-center shadow-accent bg-base-200 rounded-box gap-1"
-                    >
-                      <li>
-                        <button
-                          className="btn-sm !rounded-xl flex py-3 gap-3"
-                          type="button"
-                          onClick={() => switchNetwork?.(configuredNetwork.id)}
-                        >
-                          <ArrowsRightLeftIcon className="h-6 w-4 ml-2 sm:ml-0" />
-                          <span className="whitespace-nowrap">
-                            Switch to <span style={{ color: networkColor }}>{configuredNetwork.name}</span>
-                          </span>
+                  if (chain.unsupported || chain.id !== configuredNetwork.id) {
+                    return (
+                      <div className="dropdown dropdown-end">
+                        <button type="button" className="btn btn-danger btn-sm dropdown-toggle gap-1">
+                          Wrong network
                         </button>
-                      </li>
-                      <li>
-                        <button
-                          className="menu-item text-error btn-sm !rounded-xl flex gap-3 py-3"
-                          type="button"
-                          onClick={() => disconnect()}
-                        >
-                          <ArrowLeftOnRectangleIcon className="h-6 w-4 ml-2 sm:ml-0" /> <span>Disconnect</span>
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-                );
-              }
+                        <ul className="dropdown-menu p-2 mt-1 shadow dropdown-content menu bg-light rounded-box gap-1">
+                          <li>
+                            <button
+                              className="btn btn-secondary btn-sm rounded-xl flex py-3 gap-3"
+                              type="button"
+                              onClick={() => switchNetwork?.(configuredNetwork.id)}
+                            >
+                              <span>
+                                Switch to <span className={`text-${networkColor}`}>{configuredNetwork.name}</span>
+                              </span>
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              className="btn btn-danger btn-sm rounded-xl menu-item flex gap-3 py-3"
+                              type="button"
+                              onClick={() => disconnect()}
+                            >
+                              <span>Disconnect</span>
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    );
+                  }
 
-              return (
-                <div className="px-2 flex justify-end items-center">
-                  <div className="flex flex-col items-center mr-1">
-                    <Balance address={account.address} className="min-h-0 h-auto" />
-                    <span className="text-xs" style={{ color: networkColor }}>
-                      {chain.name}
-                    </span>
-                  </div>
-                  <div className="dropdown dropdown-end leading-3">
-                    <label
-                      tabIndex={0}
-                      className="btn btn-secondary btn-sm pl-0 pr-2 shadow-md dropdown-toggle gap-0 !h-auto"
-                    >
-                      <BlockieAvatar address={account.address} size={24} ensImage={account.ensAvatar} />
-                      <span className="ml-2 mr-1">{account.displayName}</span>
-                      <ChevronDownIcon className="h-6 w-4 ml-2 sm:ml-0" />
-                    </label>
-                    <ul
-                      tabIndex={0}
-                      className="dropdown-content menu z-[2] p-2 mt-2 shadow-center shadow-accent bg-base-200 rounded-box gap-1"
-                    >
-                      <li>
-                        {addressCopied ? (
-                          <div className="btn-sm !rounded-xl flex gap-3 py-3">
-                            <CheckCircleIcon
-                              className="text-xl font-normal h-6 w-4 cursor-pointer ml-2 sm:ml-0"
-                              aria-hidden="true"
-                            />
-                            <span className=" whitespace-nowrap">Copy address</span>
-                          </div>
-                        ) : (
-                          <CopyToClipboard
-                            text={account.address}
-                            onCopy={() => {
-                              setAddressCopied(true);
-                              setTimeout(() => {
-                                setAddressCopied(false);
-                              }, 800);
-                            }}
-                          >
-                            <div className="btn-sm !rounded-xl flex gap-3 py-3">
-                              <DocumentDuplicateIcon
-                                className="text-xl font-normal h-6 w-4 cursor-pointer ml-2 sm:ml-0"
-                                aria-hidden="true"
-                              />
-                              <span className=" whitespace-nowrap">Copy address</span>
-                            </div>
-                          </CopyToClipboard>
-                        )}
-                      </li>
-                      <li>
-                        <label htmlFor="qrcode-modal" className="btn-sm !rounded-xl flex gap-3 py-3">
-                          <QrCodeIcon className="h-6 w-4 ml-2 sm:ml-0" />
-                          <span className="whitespace-nowrap">View QR Code</span>
-                        </label>
-                      </li>
-                      <li>
-                        <button className="menu-item btn-sm !rounded-xl flex gap-3 py-3" type="button">
-                          <ArrowTopRightOnSquareIcon className="h-6 w-4 ml-2 sm:ml-0" />
-                          <a
-                            target="_blank"
-                            href={blockExplorerAddressLink}
-                            rel="noopener noreferrer"
-                            className="whitespace-nowrap"
-                          >
-                            View on Block Explorer
-                          </a>
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          className="menu-item text-error btn-sm !rounded-xl flex gap-3 py-3"
-                          type="button"
-                          onClick={() => disconnect()}
-                        >
-                          <ArrowLeftOnRectangleIcon className="h-6 w-4 ml-2 sm:ml-0" /> <span>Disconnect</span>
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <input type="checkbox" id="qrcode-modal" className="modal-toggle" />
-                    <label htmlFor="qrcode-modal" className="modal cursor-pointer">
-                      <label className="modal-box relative">
-                        {/* dummy input to capture event onclick on modal box */}
-                        <input className="h-0 w-0 absolute top-0 left-0" />
-                        <label
-                          htmlFor="qrcode-modal"
-                          className="btn btn-ghost btn-sm btn-circle absolute right-3 top-3"
-                        >
-                          ✕
-                        </label>
-                        <div className="space-y-3 py-6">
-                          <div className="flex space-x-4 flex-col items-center gap-6">
-                            <QRCodeSVG value={account.address} size={256} />
-                            <Address address={account.address} format="long" disableAddressLink />
+                  return (
+                      <div className="container">
+                        <div className="row">
+                          <div className="col">
+                            {(() => {
+                              if (!connected) {
+                                return (
+                                    <button className="btn btn-primary btn-sm" onClick={openConnectModal} type="button">
+                                      Connect Wallet
+                                    </button>
+                                );
+                              }
+
+                              if (chain.unsupported || chain.id !== configuredNetwork.id) {
+                                return (
+                                    <div className="dropdown">
+                                      <button className="btn btn-danger btn-sm dropdown-toggle" type="button">
+                                        Wrong network
+                                      </button>
+                                      <ul className="dropdown-menu mt-1 shadow" role="menu">
+                                        <li>
+                                          <button className="btn btn-sm btn-danger btn-rounded flex py-3 gap-3" type="button" onClick={() => switchNetwork?.(configuredNetwork.id)}>
+                                            Switch to <span style={{ color: networkColor }}>{configuredNetwork.name}</span>
+                                          </button>
+                                        </li>
+                                        <li>
+                                          <button className="btn btn-sm btn-outline-danger btn-rounded flex gap-3 py-3" type="button" onClick={() => disconnect()}>
+                                            Disconnect
+                                          </button>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                );
+                              }
+
+                              return (
+                                  <div className="px-2 d-flex justify-content-end align-items-center">
+                                    <div className="d-flex flex-column align-items-center mr-1">
+                                      {/* Implement the Balance component here */}
+                                      <span className="text-xs" style={{ color: networkColor }}>
+                {chain.name}
+              </span>
+                                    </div>
+                                    <div className="dropdown">
+                                      <button className="btn btn-secondary btn-sm pl-0 pr-2 shadow dropdown-toggle gap-0 h-auto">
+                                        {/* Implement the BlockieAvatar component here */}
+                                        <span className="ml-2 mr-1">{account.displayName}</span>
+                                      </button>
+                                      <ul className="dropdown-menu dropdown-menu-end mt-2 shadow" role="menu">
+                                        <li>
+                                          {addressCopied ? (
+                                              <div className="btn btn-secondary btn-sm btn-rounded flex gap-3 py-3">
+                                                Copy address
+                                              </div>
+                                          ) : (
+                                              <CopyToClipboard text={account.address} onCopy={() => { setAddressCopied(true); setTimeout(() => { setAddressCopied(false); }, 800); }}>
+                                                <div className="btn btn-secondary btn-sm btn-rounded flex gap-3 py-3">
+                                                  Copy address
+                                                </div>
+                                              </CopyToClipboard>
+                                          )}
+                                        </li>
+                                        <li>
+                                          <label htmlFor="qrcode-modal" className="btn btn-secondary btn-sm btn-rounded flex gap-3 py-3">
+                                            View QR Code
+                                          </label>
+                                        </li>
+                                        <li>
+                                          <button className="btn btn-sm btn-secondary btn-rounded menu-item flex gap-3 py-3" type="button">
+                                            <a target="_blank" href={blockExplorerAddressLink} rel="noopener noreferrer" className="whitespace-nowrap">
+                                              View on Block Explorer
+                                            </a>
+                                          </button>
+                                        </li>
+                                        <li>
+                                          <button className="btn btn-danger btn-sm btn-rounded menu-item flex gap-3 py-3" type="button" onClick={() => disconnect()}>
+                                            Disconnect
+                                          </button>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <input type="checkbox" id="qrcode-modal" className="modal-toggle" />
+                                      <label htmlFor="qrcode-modal" className="modal cursor-pointer">
+                                        <label className="modal-box">
+                                          {/* dummy input to capture event onclick on modal box */}
+                                          <input className="h-0 w-0 position-absolute top-0 left-0" />
+                                          <label htmlFor="qrcode-modal" className="btn btn-ghost btn-sm btn-circle position-absolute top-3 right-3">
+                                            ✕
+                                          </label>
+                                          <div className="space-y-3 py-6">
+                                            <div className="d-flex flex-column align-items-center gap-6">
+                                              {/* Implement the QRCodeSVG component here */}
+                                              {/* Implement the Address component here */}
+                                            </div>
+                                          </div>
+                                        </label>
+                                      </label>
+                                    </div>
+                                  </div>
+                              );
+                            })()}
                           </div>
                         </div>
-                      </label>
-                    </label>
-                  </div>
-                </div>
-              );
-            })()}
-          </>
+                      </div>
+
+                  );
+                })()}
+              </div>
+            </div>
+          </div>
         );
       }}
     </ConnectButton.Custom>

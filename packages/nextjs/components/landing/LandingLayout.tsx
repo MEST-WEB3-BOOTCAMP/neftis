@@ -8,15 +8,12 @@ import CustomFooter from "~~/components/landing/CustomFooter";
 const LandingLayout = ({ children }) => {
   return (
     <>
-      <header>
-        <CustomHeader />
-      </header>
+      <CustomHeader />
 
       <main>
         <Navbar />
         {children}
         <CustomFooter />
-        <BackToTop />
       </main>
 
       <Script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js" strategy="beforeInteractive" />

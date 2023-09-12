@@ -52,7 +52,7 @@ const Categories = () => {
                 </div>
                 <div className="content mt-3">
                   <h6 className="mb-0">
-                    <a href="javascript:void(0)" className="title text-dark">
+                    <a href="#" className="title text-dark">
                       {category.title}
                     </a>
                   </h6>
