@@ -1,4 +1,24 @@
 import React from 'react';
+import {BlockieAvatar} from "~~/components/scaffold-eth";
+import Link from "next/link";
+import { useRouter } from "next/router";
+
+const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+    const router = useRouter();
+    const isActive = router.pathname === href;
+
+    return (
+        <Link
+            href={href}
+            passHref
+            className={`${
+                isActive ? "bg-secondary shadow-md" : ""
+            } hover:bg-secondary hover:shadow-md focus:!bg-secondary active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
+        >
+            {children}
+        </Link>
+    );
+};
 
 const ProfileIcon = ({account, chain, openChainModal, openAccountModal}) => {
     return (
@@ -9,9 +29,9 @@ const ProfileIcon = ({account, chain, openChainModal, openAccountModal}) => {
                         <button className="position-absolute top-50 translate-middle-x p-2 bg-success border border-light rounded-circle"/>
                         <button type="button" className="btn btn-soft-primary dropdown-toggle p-2"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-
                             <div className="flex-1 ms-2">
-                                <span className="d-block    ">
+                                {/*<BlockieAvatar/>*/}
+                                <span className="d-block">
                                     {account.displayName}
                                 </span>
                             </div>
@@ -23,9 +43,9 @@ const ProfileIcon = ({account, chain, openChainModal, openAccountModal}) => {
                             margin: '0px',
                             transform: 'translate3d(0px, 40px, 0px)'
                         }} data-popper-placement="bottom-end">
-                            <button className="dropdown-item d-flex align-items-center text-dark pb-3" href="">
+                            <button className="dropdown-item d-flex align-items-center text-dark pb-3">
                                 <span className="avatar avatar-md-sm rounded-circle border shadow d-flex align-items-center justify-content-center">
-                                    <i className="uil uil-wallet" width={48}/>
+                                    <i className="uil uil-wallet"/>
                                 </span>
 
                                 <div className="flex-1 ms-2">
@@ -37,11 +57,11 @@ const ProfileIcon = ({account, chain, openChainModal, openAccountModal}) => {
                             <a className="dropdown-item text-dark" href="#">
                                 <span className="mb-0 d-inline-block me-1"><i className="ti ti-home"/></span> Assets
                             </a>
-                            <a className="dropdown-item text-dark" href="#">
-                                <span className="mb-0 d-inline-block me-1"><i
-                                    className="ti ti-settings"/></span> Profile
+                            <a className="dropdown-item text-dark" href="/dashboard">
+                                <span className="mb-0 d-inline-block me-1">
+                                    <i className="ti ti-settings"/></span> Profile
                             </a>
-                            <a onClick={openChainModal} className="dropdown-item text-dark" href="#">
+                            <a onClick={openChainModal} className="dropdown-item text-dark" href="/dashboard">
                                 <span className="mb-0 d-inline-block me-1"><i
                                     className="ti ti-settings"/></span> Switch Networks
                             </a>

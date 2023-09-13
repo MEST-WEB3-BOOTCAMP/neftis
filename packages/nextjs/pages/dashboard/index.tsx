@@ -1,64 +1,64 @@
-import {useEffect} from "react";
 import type {NextPage} from "next";
-import {hardhat} from "wagmi/chains";
-import {PaginationButton} from "~~/components/blockexplorer/PaginationButton";
-import {SearchBar} from "~~/components/blockexplorer/SearchBar";
-import {TransactionsTable} from "~~/components/blockexplorer/TransactionsTable";
-import {useFetchBlocks} from "~~/hooks/scaffold-eth";
-import {getTargetNetwork, notification} from "~~/utils/scaffold-eth";
-import TopHeader from "~~/components/dashboard/TopHeader";
 import Sidebar from "~~/components/dashboard/Sidebar";
+import React from "react";
 
 const Dashboard: NextPage = () => {
-    const {blocks, transactionReceipts, currentPage, totalBlocks, setCurrentPage, isLoading, error} = useFetchBlocks();
-
-    useEffect(() => {
-        if (getTargetNetwork().id === hardhat.id && error) {
-            notification.error(
-                <>
-                    <p className="font-bold mt-0 mb-1">Cannot connect to local provider</p>
-                    <p className="m-0">
-                        - Did you forget to run <code className="italic bg-base-300 text-base font-bold">yarn
-                        chain</code> ?
-                    </p>
-                    <p className="mt-1 break-normal">
-                        - Or you can change <code
-                        className="italic bg-base-300 text-base font-bold">targetNetwork</code> in{" "}
-                        <code className="italic bg-base-300 text-base font-bold">scaffold.config.ts</code>
-                    </p>
-                </>,
-            );
-        }
-
-        if (getTargetNetwork().id !== hardhat.id) {
-            notification.error(
-                <>
-                    <p className="font-bold mt-0 mb-1">
-                        <code className="italic bg-base-300 text-base font-bold"> targeNetwork </code> is not localhost
-                    </p>
-                    <p className="m-0">
-                        - You are on <code
-                        className="italic bg-base-300 text-base font-bold">{getTargetNetwork().name}</code> .This
-                        block explorer is only for <code
-                        className="italic bg-base-300 text-base font-bold">localhost</code>.
-                    </p>
-                    <p className="mt-1 break-normal">
-                        - You can use{" "}
-                        <a className="text-accent" href={getTargetNetwork().blockExplorers?.default.url}>
-                            {getTargetNetwork().blockExplorers?.default.name}
-                        </a>{" "}
-                        instead
-                    </p>
-                </>,
-            );
-        }
-    }, [error]);
-
     return (
-        <div className="ro mt-100">
-            <TopHeader/>
-            <Sidebar/>
-            dashboard works
+        <div className="container mt-100">
+            <div id="sidebar" className="sidebar-wrapper">
+                <div className="sidebar-content" data-simplebar="init">
+                    <div className="simplebar-wrapper">
+                        <div className="simplebar-height-auto-observer-wrapper">
+                            <div className="simplebar-height-auto-observer"/>
+                        </div>
+                        <div className="simplebar-mask">
+                            <div className="simplebar-offset">
+                                <div className="simplebar-content-wrapper" tabIndex="0" role="region"
+                                     aria-label="scrollable content">
+                                    <div className="simplebar-content">
+                                        <div className="sidebar-brand">
+                                            <a href="index.html">
+                                                <img src="assets/images/logo-dark.png" height="24"
+                                                     className="logo-light-mode"
+                                                     alt=""/>
+                                                <img src="assets/images/logo-light.png" height="24"
+                                                     className="logo-dark-mode"
+                                                     alt=""/>
+                                                <span className="sidebar-colored">
+                                                {/*<img src="assets/images/logo-light.png" height="24" alt=""/>*/}
+                                            </span>
+                                            </a>
+                                        </div>
+
+                                        <ul className="sidebar-menu">
+                                            <li className="sidebar-dropdown">
+                                                <a href=""><i className="ti ti-home me-2"/>Dashboard</a>
+                                                <div className="sidebar-submenu">
+                                                    <ul>
+                                                        <li><a href="#">Analytics</a></li>
+                                                        <li><a href="#">Cryptocurrency <span
+                                                            className="badge text-bg-danger">New</span></a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li className="sidebar-dropdown">
+                                                <a href=""><i className="ti ti-browser me-2"/>Layouts</a>
+                                                <div className="sidebar-submenu">
+                                                    <ul>
+                                                        <li><a href="#">Dark Dashboard</a></li>
+                                                        <li><a href="#">RTL Dashboard</a></li>
+                                                        <li><a href="#">Dark RTL Dashboard</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

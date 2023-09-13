@@ -6,7 +6,8 @@ const CustomFooter = () => {
     const isDashboardPage = router.pathname.startsWith('/dashboard');
 
     return (
-        <div className={isDashboardPage ? 'footer fixed-bottom' : 'footer'}>
+        // <div className={isDashboardPage ? 'footer fixed-bottom' : 'footer'}>
+        <div className="footer">
             <div className="container">
                 <div className="row">
                     <div className="col-12">
