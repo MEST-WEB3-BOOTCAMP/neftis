@@ -6,19 +6,15 @@ import NextNProgress from "nextjs-progressbar";
 import {Toaster} from "react-hot-toast";
 import {useDarkMode} from "usehooks-ts";
 import {WagmiConfig} from "wagmi";
-import Categories from "~~/components/landing/Categories";
-import Collections from "~~/components/landing/Collections";
-import Creators from "~~/components/landing/Creators";
-import Hero from "~~/components/landing/Hero";
 import LandingLayout from "~~/components/landing/LandingLayout";
-import Marketplace from "~~/components/landing/Marketplace";
 import {BlockieAvatar} from "~~/components/scaffold-eth";
 import {useNativeCurrencyPrice} from "~~/hooks/scaffold-eth";
 import {useGlobalState} from "~~/services/store/store";
 import {wagmiConfig} from "~~/services/web3/wagmiConfig";
 import {appChains} from "~~/services/web3/wagmiConnectors";
-import "~~/public/assets/css/style.min.css";
+import "~~/public/assets/dashboard/css/bootstrap.min.css";
 import "~~/public/assets/css/bootstrap.min.css";
+// import "~~/public/assets/css/style.min.css";
 // import "~~/styles/globals.css";
 
 const ScaffoldEthApp: React.FC<AppProps> = ({ Component, pageProps }) => {

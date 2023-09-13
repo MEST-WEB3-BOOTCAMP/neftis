@@ -90,8 +90,8 @@ const Marketplace = () => {
                 <img src={product.imgSrc} className="img-fluid item-img" alt="" />
                 <div className="overlay" />
                 <div className="bid-btn p-3 text-center">
-                  <a href="nft-item-detail.html" className="btn btn-pills">
-                    <i className="mdi mdi-gavel fs-6 me-2" /> Bid
+                  <a href="#" className="btn btn-pills">
+                    <i className="mdi mdi-gavel fs-6 me-2" /> Buy
                   </a>
                 </div>
                 <div className="position-absolute top-0 start-0 m-2">
