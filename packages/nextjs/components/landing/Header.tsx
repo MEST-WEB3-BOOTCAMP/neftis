@@ -18,6 +18,7 @@ const CustomHeader: React.FC = () => {
 
         <link rel="shortcut icon" href="/assets/images/favicon.ico" />
         <link href="/assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet" />
+        <link href="/assets/libs/simplebar/simplebar.min.css" rel="stylesheet"/>
         <link
           href="/assets/css/bootstrap.min.css"
           id="bootstrap-style"

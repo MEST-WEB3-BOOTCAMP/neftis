@@ -4,6 +4,7 @@ import CustomHeader from "./Header";
 import Navbar from "./Navbar";
 import BackToTop from "~~/components/landing/BackToTop";
 import CustomFooter from "~~/components/landing/CustomFooter";
+import TopHeader from "~~/components/dashboard/TopHeader";
 
 const LandingLayout = ({ children }) => {
   return (

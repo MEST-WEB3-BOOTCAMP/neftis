@@ -1,6 +1,6 @@
 import React from "react";
 
-const Products = () => {
+const Marketplace = () => {
   const productData = [
     {
       imgSrc: "assets/images/nft/1.jpg",
@@ -127,4 +127,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Marketplace;

@@ -1,4 +1,6 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import ProfileIcon from "~~/components/landing/ProfileIcon";
+import React from "react";
 export const RainbowKitConnectButton = () => {
     return (
         <ConnectButton.Custom>
@@ -48,40 +50,7 @@ export const RainbowKitConnectButton = () => {
                             }
                             return (
                                 <div style={{ display: 'flex', gap: 12 }}>
-                                    <button
-                                        onClick={openChainModal}
-                                        style={{ display: 'flex', alignItems: 'center' }}
-                                        type="button"
-                                        className="btn btn-primary"
-                                    >
-                                        {chain.hasIcon && (
-                                            <div
-                                                style={{
-                                                    background: chain.iconBackground,
-                                                    width: 12,
-                                                    height: 12,
-                                                    borderRadius: 999,
-                                                    overflow: 'hidden',
-                                                    marginRight: 4,
-                                                }}
-                                            >
-                                                {chain.iconUrl && (
-                                                    <img
-                                                        alt={chain.name ?? 'Chain icon'}
-                                                        src={chain.iconUrl}
-                                                        style={{ width: 12, height: 12 }}
-                                                    />
-                                                )}
-                                            </div>
-                                        )}
-                                        {chain.name}
-                                    </button>
-                                    <button onClick={openAccountModal} type="button" className="btn btn-primary">
-                                        {account.displayName}
-                                        {account.displayBalance
-                                            ? ` (${account.displayBalance})`
-                                            : ''}
-                                    </button>
+                                    <ProfileIcon chain={chain} account={account} openChainModal={openChainModal} openAccountModal={openAccountModal}/>
                                 </div>
                             );
                         })()}

@@ -16,10 +16,10 @@ const HomeSection: React.FC = () => {
               </p>
               <div className="mt-4">
                 <a href="#" className="btn btn-primary">
-                  <i className="uil uil-bitcoin"/> Mint NFT
+                  <i className="uil uil-bitcoin"/> Connect Wallet
                 </a>
                 <a href="#" className="btn btn-soft-primary ms-1">
-                  <i className="uil uil-file-bookmark-alt"/> Explore
+                  <i className="uil uil-file-bookmark-alt"/> Shop
                 </a>
               </div>
             </div>
