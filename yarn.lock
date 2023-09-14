@@ -1823,6 +1823,7 @@ __metadata:
     "@heroicons/react": ^2.0.11
     "@rainbow-me/rainbowkit": 1.0.8
     "@trivago/prettier-plugin-sort-imports": ^4.1.1
+    "@types/feather-icons": ^4
     "@types/node": ^17.0.35
     "@types/react": ^18.0.9
     "@types/react-blockies": ^1.4.1
@@ -1836,6 +1837,7 @@ __metadata:
     eslint-config-next: ^13.1.6
     eslint-config-prettier: ^8.5.0
     eslint-plugin-prettier: ^4.2.1
+    feather-icons: ^4.29.1
     next: ^13.1.6
     nextjs-progressbar: ^0.0.16
     postcss: ^8.4.16
@@ -2398,6 +2400,13 @@ __metadata:
   version: 1.0.0
   resolution: "@types/estree@npm:1.0.0"
   checksum: 910d97fb7092c6738d30a7430ae4786a38542023c6302b95d46f49420b797f21619cdde11fa92b338366268795884111c2eb10356e4bd2c8ad5b92941e9e6443
+  languageName: node
+  linkType: hard
+
+"@types/feather-icons@npm:^4":
+  version: 4.29.1
+  resolution: "@types/feather-icons@npm:4.29.1"
+  checksum: a4ad06983069068aeb3b6e83c9e0422dbf90508dd8a36a50c20b98455f59cda85577972cdf0a0f4ce2cce1a9116fa4bca94150faefcc624acfeb6b24a81d9a5d
   languageName: node
   linkType: hard
 
@@ -5021,6 +5030,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"classnames@npm:^2.2.5":
+  version: 2.3.2
+  resolution: "classnames@npm:2.3.2"
+  checksum: 2c62199789618d95545c872787137262e741f9db13328e216b093eea91c85ef2bfb152c1f9e63027204e2559a006a92eb74147d46c800a9f96297ae1d9f96f4e
+  languageName: node
+  linkType: hard
+
 "clean-stack@npm:^2.0.0":
   version: 2.2.0
   resolution: "clean-stack@npm:2.2.0"
@@ -5324,6 +5340,13 @@ __metadata:
   version: 3.25.3
   resolution: "core-js-pure@npm:3.25.3"
   checksum: be3097b8e2b541977a08004e433b68adb4951cc7694229e695ae407f296d370c1f360e5fd70fc6910c4427e46e48e087ac455d68cebdf4314370907d2e03eef1
+  languageName: node
+  linkType: hard
+
+"core-js@npm:^3.1.3":
+  version: 3.32.2
+  resolution: "core-js@npm:3.32.2"
+  checksum: d6fac7e8eb054eefc211c76cd0a0ff07447a917122757d085f469f046ec888d122409c7db1a9601c3eb5fa767608ed380bcd219eace02bdf973da155680edeec
   languageName: node
   linkType: hard
 
@@ -7144,6 +7167,16 @@ __metadata:
   dependencies:
     reusify: ^1.0.4
   checksum: 32cf15c29afe622af187d12fc9cd93e160a0cb7c31a3bb6ace86b7dea3b28e7b72acde89c882663f307b2184e14782c6c664fa315973c03626c7d4bff070bb0b
+  languageName: node
+  linkType: hard
+
+"feather-icons@npm:^4.29.1":
+  version: 4.29.1
+  resolution: "feather-icons@npm:4.29.1"
+  dependencies:
+    classnames: ^2.2.5
+    core-js: ^3.1.3
+  checksum: 87c7d1b2a5049e0be1dbae27bd5d287c5abd9f4d6bc81783fa8559b2946fbd1e885f658584d0cff1879cb7bdedafaeb68e7548e2d5fcde40b9fcc74368259b92
   languageName: node
   linkType: hard
 

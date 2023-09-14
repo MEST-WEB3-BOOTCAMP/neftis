@@ -53,14 +53,10 @@ const ProfileIcon = ({account, chain, openChainModal, openAccountModal}) => {
                                     <small className="text-muted">{account.displayBalance}</small>
                                 </div>
                             </button>
-
-                            <a className="dropdown-item text-dark" href="#">
-                                <span className="mb-0 d-inline-block me-1"><i className="ti ti-home"/></span> Assets
-                            </a>
-                            <a className="dropdown-item text-dark" href="/dashboard">
+                            <Link className="dropdown-item text-dark" href="dashboard">
                                 <span className="mb-0 d-inline-block me-1">
                                     <i className="ti ti-settings"/></span> Profile
-                            </a>
+                            </Link>
                             <a onClick={openChainModal} className="dropdown-item text-dark" href="/dashboard">
                                 <span className="mb-0 d-inline-block me-1"><i
                                     className="ti ti-settings"/></span> Switch Networks
