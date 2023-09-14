@@ -61,18 +61,20 @@ contract Nefti is ERC165, ERC1155 {
 		balances[_to][_id] = balances[_to][_id].add(_value);
 	}
 
-	function mint(
-		address _to,
-		string memory _uri,
-		uint256 _totalSupply
-	) external whenNotZeroAddress(_to) {
+	function mint(string memory _uri, uint256 _totalSupply) external {
 		require(
 			_totalSupply > 0,
 			"ERC1155: mint amount must be greater than zero"
 		);
-		uint256 id = tokenStore.mint(_to, _uri, _totalSupply);
-		balances[_to][id] = balances[_to][id].add(_totalSupply);
-		emit TransferSingle(address(0), msg.sender, _to, id, _totalSupply);
+		uint256 id = tokenStore.mint(msg.sender, _uri, _totalSupply);
+		balances[msg.sender][id] = balances[msg.sender][id].add(_totalSupply);
+		emit TransferSingle(
+			address(this),
+			address(0),
+			msg.sender,
+			id,
+			_totalSupply
+		);
 	}
 
 	function balanceOf(
