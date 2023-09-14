@@ -65,7 +65,7 @@ contract Nefti is ERC165, ERC1155 {
 		address _to,
 		string memory _uri,
 		uint256 _totalSupply
-	) external onlyAdmin whenNotZeroAddress(_to) {
+	) external whenNotZeroAddress(_to) {
 		require(
 			_totalSupply > 0,
 			"ERC1155: mint amount must be greater than zero"
