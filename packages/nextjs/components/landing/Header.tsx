@@ -9,10 +9,10 @@ const CustomHeader: React.FC = () => {
                 <meta charSet="utf-8"/>
                 <title>Landrick - Saas & Software Landing Page Template</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-                <meta name="description" content="Premium Bootstrap 5 Landing Page Template"/>
+                <meta name="description" content="Premium Template"/>
                 <meta name="keywords" content="Saas, Software, multi-uses, HTML, Clean, Modern"/>
-                <meta name="author" content="Shreethemes"/>
-                <meta name="email" content="support@shreethemes.in"/>
+                <meta name="author" content="NADABS"/>
+                <meta name="email" content="nadabs@nadabs.in"/>
                 <meta name="website" content="../../index.html"/>
                 <meta name="Version" content="v4.7.0"/>
 

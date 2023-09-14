@@ -1,4 +1,6 @@
 import React from "react";
+import {RainbowKitConnectButton} from "~~/components/RainbowKitConnect";
+import {RainbowKitCustomConnectButton} from "~~/components/scaffold-eth";
 
 const HomeSection: React.FC = () => {
   return (
@@ -15,10 +17,10 @@ const HomeSection: React.FC = () => {
                 bootstrap v5 html page.
               </p>
               <div className="mt-4">
-                <a href="#" className="btn btn-primary">
-                  <i className="uil uil-bitcoin"/> Connect Wallet
-                </a>
-                <a href="#" className="btn btn-soft-primary ms-1">
+                {/*<a href="#" className="btn btn-primary">*/}
+                  <RainbowKitConnectButton/>
+                {/*</a>*/}
+                <a href="/#marketplace" className="btn btn-soft-primary ms-1">
                   <i className="uil uil-file-bookmark-alt"/> Shop
                 </a>
               </div>

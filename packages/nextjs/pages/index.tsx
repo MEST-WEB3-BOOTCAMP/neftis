@@ -12,7 +12,6 @@ const Home: NextPage = () => {
   return (
     <>
       <MetaHeader />
-
         <Hero/>
         <section class="section">
             <div id="collections" className="mt-50">
