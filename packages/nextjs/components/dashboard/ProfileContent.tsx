@@ -4,7 +4,7 @@ import CollectionCards from "~~/components/dashboard/CollectionCards";
 import CreateAsset from "~~/components/dashboard/CreateAsset";
 import CreateCollection from "~~/components/dashboard/CreateCollection";
 
-const ProfileSection: React.FC = () => {
+const ProfileContent: React.FC = () => {
     const assets = [{
         image: 'https://picsum.photos/200/200',
         title: 'Design your apps in your own way',
@@ -119,7 +119,6 @@ const ProfileSection: React.FC = () => {
                             {subMenu === 'collections' && (<CollectionCards/>)}
                             {subMenu === 'collection' && (<CreateCollection/>)}
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -127,4 +126,4 @@ const ProfileSection: React.FC = () => {
     );
 };
 
-export default ProfileSection;
+export default ProfileContent;
