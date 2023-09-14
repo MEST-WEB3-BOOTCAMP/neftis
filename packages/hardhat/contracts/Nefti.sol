@@ -15,9 +15,9 @@ contract Nefti is ERC165, ERC1155 {
 	using Tokens for Tokens.TokenStorage;
 	using SafeMath for uint256;
 
-	bytes4 public constant ERC1155_ERC165 = 0xd9b67a26;
-	bytes4 public constant ERC1155_ACCEPTED = 0xf23a6e61;
-	bytes4 public constant ERC1155_BATCH_ACCEPTED = 0xbc197c81;
+	bytes4 private constant ERC1155_ERC165 = 0xd9b67a26;
+	bytes4 private constant ERC1155_ACCEPTED = 0xf23a6e61;
+	bytes4 private constant ERC1155_BATCH_ACCEPTED = 0xbc197c81;
 
 	address private administrator;
 	Tokens.TokenStorage private tokenStore;
@@ -64,12 +64,15 @@ contract Nefti is ERC165, ERC1155 {
 	function mint(
 		address _to,
 		string memory _uri,
-		uint256 _value
+		uint256 _totalSupply
 	) external onlyAdmin whenNotZeroAddress(_to) {
-		require(_value > 0, "ERC1155: mint amount must be greater than zero");
-		uint256 id = tokenStore.mint(_to, _uri);
-		balances[_to][id] = balances[_to][id].add(_value);
-		emit TransferSingle(address(0), msg.sender, _to, id, _value);
+		require(
+			_totalSupply > 0,
+			"ERC1155: mint amount must be greater than zero"
+		);
+		uint256 id = tokenStore.mint(_to, _uri, _totalSupply);
+		balances[_to][id] = balances[_to][id].add(_totalSupply);
+		emit TransferSingle(address(0), msg.sender, _to, id, _totalSupply);
 	}
 
 	function balanceOf(
@@ -188,5 +191,9 @@ contract Nefti is ERC165, ERC1155 {
 		address _operator
 	) external view override returns (bool) {
 		return operators[_owner][_operator];
+	}
+
+	function getAllTokens() external view returns (Tokens.Token[] memory) {
+		return tokenStore.all();
 	}
 }
