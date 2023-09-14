@@ -13,6 +13,7 @@ library Tokens {
 		address owner;
 		address approved;
 		string uri;
+		uint256 totalSupply;
 	}
 
 	struct TokenStorage {
@@ -23,7 +24,8 @@ library Tokens {
 	function mint(
 		TokenStorage storage tokenStore,
 		address _to,
-		string memory _uri
+		string memory _uri,
+		uint256 _totalSupply
 	) internal returns (uint256) {
 		require(_to != address(0), "Mint to the zero address");
 		tokenStore.tokenId = tokenStore.tokenId.add(1);
@@ -32,7 +34,8 @@ library Tokens {
 			id: newTokenId,
 			owner: _to,
 			approved: address(0),
-			uri: _uri
+			uri: _uri,
+			totalSupply: _totalSupply
 		});
 		return newTokenId;
 	}
@@ -145,5 +148,15 @@ library Tokens {
 			}
 		}
 		revert("Invalid index");
+	}
+
+	function all(
+		TokenStorage storage tokenStore
+	) internal view returns (Token[] memory) {
+		Token[] memory tokens = new Token[](tokenStore.tokenId);
+		for (uint256 i = 0; i < tokenStore.tokenId; i++) {
+			tokens[i] = tokenStore.tokens[i + 1];
+		}
+		return tokens;
 	}
 }
